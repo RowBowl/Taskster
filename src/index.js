@@ -1,14 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
-import Goal from './components/goal';
-import Top from './components/top'
-//ReactDOM.render(<Goal />, document.getElementById('root'));
-ReactDOM.render(<Top />, document.getElementById('root'));
-ReactDOM.render(<Goal />, document.getElementById('task-to-do'));
+import * as serviceWorker from "./serviceWorker";
+import "bootstrap/dist/css/bootstrap.css";
+import Goals from "./components/goals";
+
+ReactDOM.render(<Goals />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
