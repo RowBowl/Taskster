@@ -18,6 +18,17 @@ class AddForm extends Component {
     this.setState({ open: false });
   };
   */
+
+  getInfo() {
+    const textItem = document.getElementById("goalTitle");
+    const textAreaItem = document.getElementById("goalBody");
+
+    if (textItem === null || textAreaItem === null) {
+      return null;
+    } else {
+      return { goalTitle: textItem.value, goalBody: textAreaItem.value };
+    }
+  }
   render() {
     if (!this.props.open) {
       return null;
@@ -48,13 +59,13 @@ class AddForm extends Component {
         <DialogActions>
           <button
             className="btn btn-success btn-sm"
-            onClick={() => this.props.onFormClose()}
+            onClick={() => this.props.onFormClose(this.getInfo())}
           >
             Submit
           </button>
           <button
             className="btn btn-danger btn-sm"
-            onClick={() => this.props.onFormClose()}
+            onClick={() => this.props.onFormClose(null)}
           >
             Cancel
           </button>

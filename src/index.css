@@ -16,3 +16,11 @@ code {
 .deleteBtn {
   float: right;
 }
+
+.goalText {
+  text-align: start;
+}
+
+.navbar {
+  margin-bottom: 10px;
+}

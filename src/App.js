@@ -7,14 +7,26 @@ import NavBar from "./components/navbar";
 
 class App extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    currID: 0,
+    goals: []
   };
 
   handleAdd = () => {
     this.setState({ isOpen: true });
   };
 
-  handleClose = () => {
+  handleClose = data => {
+    if (data === null) {
+      return null;
+    }
+
+    const { goalTitle, goalBody } = data;
+
+    const goals = this.state.goals;
+    goals.push({ id: this.state.currID, goalTitle, goalBody });
+    this.setState({ goals });
+    this.setState({ currID: this.state.currID + 1 });
     this.setState({ isOpen: false });
   };
 
@@ -25,7 +37,11 @@ class App extends Component {
         <div className="container-fluid">
           <div className="App row">
             <div className="col">
-              <Goals className="leftGoals" />
+              <Goals
+                className="leftGoals"
+                goals={this.state.goals}
+                currID={this.state.currID}
+              />
               <button
                 className="btn btn-primary btn-sm m-2"
                 onClick={this.handleAdd}
@@ -34,14 +50,14 @@ class App extends Component {
               </button>
             </div>
             <div className="col">
-              <Goals className="rightGoals" />
+              <p>completed goals placeholder</p>
             </div>
           </div>
         </div>
 
         <AddForm
           open={this.state.isOpen}
-          onFormClose={() => this.handleClose()}
+          onFormClose={data => this.handleClose(data)}
         />
       </React.Fragment>
     );
