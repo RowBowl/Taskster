@@ -12,12 +12,17 @@ class App extends Component {
     goals: []
   };
 
+  handleDelete = id => {
+    const goals = this.state.goals.filter(x => x.id !== id);
+    this.setState({ goals });
+  };
   handleAdd = () => {
     this.setState({ isOpen: true });
   };
 
   handleClose = data => {
     if (data === null) {
+      this.setState({ isOpen: false });
       return null;
     }
 
@@ -41,6 +46,7 @@ class App extends Component {
                 className="leftGoals"
                 goals={this.state.goals}
                 currID={this.state.currID}
+                onDelete={id => this.handleDelete(id)}
               />
               <button
                 className="btn btn-primary btn-sm m-2"

@@ -12,7 +12,12 @@ class Goal extends Component {
         <div className="card">
           <div className="card-header goalText">
             {this.state.goalTitle}
-            <button className="btn btn-danger btn-sm deleteBtn">Delete</button>
+            <button
+              className="btn btn-danger btn-sm deleteBtn"
+              onClick={() => this.props.onDelete(this.props.goal.id)}
+            >
+              Delete
+            </button>
           </div>
 
           <div className="card-body goalText">{this.state.goalBody}</div>

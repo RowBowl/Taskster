@@ -9,7 +9,11 @@ class Goals extends Component {
     return (
       <React.Fragment>
         {this.props.goals.map(goal => (
-          <Goal key={goal.id} goal={goal} />
+          <Goal
+            key={goal.id}
+            goal={goal}
+            onDelete={id => this.props.onDelete(id)}
+          />
         ))}
       </React.Fragment>
     );

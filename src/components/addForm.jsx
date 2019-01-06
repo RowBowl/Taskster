@@ -29,6 +29,31 @@ class AddForm extends Component {
       return { goalTitle: textItem.value, goalBody: textAreaItem.value };
     }
   }
+
+  validateForm = () => {
+    const info = this.getInfo();
+
+    if (info !== null) {
+      const { goalTitle, goalBody } = info;
+
+      if (
+        !goalTitle ||
+        !goalBody ||
+        goalTitle.trim().length === 0 ||
+        goalBody.trim().length === 0
+      ) {
+        const messageElement = document.getElementById("message");
+        messageElement.style.display = "inline";
+        messageElement.innerHTML = "Invalid Entries";
+        return null;
+      }
+
+      this.props.onFormClose(info);
+    } else {
+      return null;
+    }
+  };
+
   render() {
     if (!this.props.open) {
       return null;
@@ -49,17 +74,28 @@ class AddForm extends Component {
 
           <div className="form-group">
             <label htmlFor="goalTitle">Goal Title:</label>
-            <input type="text" className="form-control" id="goalTitle" />
+            <input
+              type="text"
+              className="form-control"
+              id="goalTitle"
+              required
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="goalBody">Goal Body:</label>
-            <textarea className="form-control" rows="5" id="goalBody" />
+            <label htmlFor="goalBody">Goal Description:</label>
+            <textarea
+              className="form-control"
+              rows="5"
+              id="goalBody"
+              required
+            />
           </div>
+          <div id="message" className="invalidMessage" />
         </DialogContent>
         <DialogActions>
           <button
             className="btn btn-success btn-sm"
-            onClick={() => this.props.onFormClose(this.getInfo())}
+            onClick={this.validateForm}
           >
             Submit
           </button>

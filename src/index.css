@@ -24,3 +24,10 @@ code {
 .navbar {
   margin-bottom: 10px;
 }
+
+.invalidMessage {
+  background-color: #f56666;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+}
