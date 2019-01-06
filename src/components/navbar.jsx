@@ -5,7 +5,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-sm bg-light">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href=".">
           Schedule App
         </a>
       </nav>
