@@ -6,7 +6,7 @@ class NavBar extends Component {
     return (
       <nav className="navbar navbar-expand-sm bg-light">
         <a className="navbar-brand" href=".">
-          Schedule App
+          Goals App
         </a>
       </nav>
     );

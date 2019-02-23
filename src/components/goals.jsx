@@ -13,6 +13,8 @@ class Goals extends Component {
             key={goal.id}
             goal={goal}
             onDelete={id => this.props.onDelete(id)}
+            onComp={id=> this.props.onComp(id)}
+            partOf={this.props.type}
           />
         ))}
       </React.Fragment>

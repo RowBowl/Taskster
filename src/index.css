@@ -30,10 +30,14 @@ code {
     border-radius: 5px;
     padding-top: 5px;
 }
-.deleteBtn {
+.goalBtn {
   float: right;
-}
 
+}
+.compBtn {
+  float: right;
+  margin-right: 2px;
+}
 .goalText {
   text-align: start;
 }

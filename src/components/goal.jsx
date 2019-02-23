@@ -6,6 +6,10 @@ class Goal extends Component {
     goalBody: this.props.goal.goalBody
   };
 
+  getType = () => {
+      const partOf = this.props.partOf;
+      return (partOf === "todo" ? "checkmark": "arrow-back");
+  }
   render() {
     return (
       <div className="container">
@@ -13,10 +17,15 @@ class Goal extends Component {
           <div className="card-header goalText">
             {this.state.goalTitle}
             <button
-              className="btn btn-danger btn-sm deleteBtn"
-              onClick={() => this.props.onDelete(this.props.goal.id)}
-            >
-              Delete
+                className="btn btn-danger btn-sm goalBtn"
+                onClick={() => this.props.onDelete(this.props.goal.id)}
+            >Delete
+            </button>
+            <button
+                className="btn btn-success btn-sm compBtn"
+                onClick={() => this.props.onComp(this.props.goal.id)}
+            > <ion-icon name={this.getType()}></ion-icon>
+
             </button>
           </div>
 
