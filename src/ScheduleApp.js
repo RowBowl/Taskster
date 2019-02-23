@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-//import logo from "./logo.svg";
-import "./App.css";
 import Goals from "./components/goals";
 import AddForm from "./components/addForm";
 import NavBar from "./components/navbar";
 
-class App extends Component {
+class ScheduleApp extends Component {
   state = {
     isOpen: false,
     currID: 0,
@@ -39,9 +37,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <div className="container-fluid">
-          <div className="App row">
-            <div className="col">
+        <div className="container">
+          <div className="App row justify-content-around">
+            <div className="col-5 goalCol">
               <Goals
                 className="leftGoals"
                 goals={this.state.goals}
@@ -55,7 +53,8 @@ class App extends Component {
                 Add Goal
               </button>
             </div>
-            <div className="col">
+
+            <div className="col-5 compCol">
               <p>completed goals placeholder</p>
             </div>
           </div>
@@ -70,4 +69,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ScheduleApp;
