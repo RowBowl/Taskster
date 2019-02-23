@@ -18,11 +18,23 @@ class GoalsApp extends Component {
     //COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     handleComplete = data => {
         const goal = this.state.goals.find(x => x.id === data );
-        const goals = this.state.goals.filter(x => x.id !== data);
-        const comp = this.state.comp;
-        comp.push(goal);
-        this.setState({ goals });
-        this.setState({comp});
+
+        if(goal){
+
+            const goals = this.state.goals.filter(x => x.id !== data);
+            const comp = this.state.comp;
+            comp.push(goal);
+            this.setState({ goals });
+            this.setState({comp});
+        } else{
+            const compGoal = this.state.comp.find(x => x.id === data );
+            const comp = this.state.comp.filter(x => x.id !== data);
+            const goals = this.state.goals;
+            goals.push(compGoal);
+            this.setState({ goals });
+            this.setState({comp});
+        }
+
     };
 
 
@@ -94,6 +106,7 @@ class GoalsApp extends Component {
                             goals={this.state.comp}
                             currID={this.state.currID}
                             onDelete={id => this.handleDelete(id)}
+                            onComp={id=>this.handleComplete(id)}
                             type="complete"
                             />
                         </div>
