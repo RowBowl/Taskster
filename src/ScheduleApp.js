@@ -1,26 +1,41 @@
 import React, { Component } from "react";
 import Goals from "./components/goals";
 import AddForm from "./components/addForm";
+import DelForm from "./components/delForm";
 import NavBar from "./components/navbar";
 
 class ScheduleApp extends Component {
   state = {
     isOpen: false,
+    isDelOpen: false,
     currID: 0,
-    goals: []
+    goals: [],
+    toDel: null
   };
 
   handleDelete = id => {
-    const goals = this.state.goals.filter(x => x.id !== id);
-    this.setState({ goals });
+    this.setState({toDel:id},() => {
+        this.setState({isDelOpen: true});
+    });
+
   };
+  handleDelClose = data => {
+      const toDel = this.state.toDel;
+      if(data){
+          const goals = this.state.goals.filter(x => x.id !== this.state.toDel);
+          this.setState({ goals });
+      }
+      this.setState({toDel: null});
+      this.setState({isDelOpen:false});
+  };
+ 
   handleAdd = () => {
     this.setState({ isOpen: true });
   };
 
   handleClose = data => {
-    if (data === null) {
-      this.setState({ isOpen: false });
+    this.setState({ isOpen: false });
+    if (!data) {
       return null;
     }
 
@@ -30,7 +45,6 @@ class ScheduleApp extends Component {
     goals.push({ id: this.state.currID, goalTitle, goalBody });
     this.setState({ goals });
     this.setState({ currID: this.state.currID + 1 });
-    this.setState({ isOpen: false });
   };
 
   render() {
@@ -64,6 +78,7 @@ class ScheduleApp extends Component {
           open={this.state.isOpen}
           onFormClose={data => this.handleClose(data)}
         />
+        <DelForm open={this.state.isDelOpen} onFormClose={data => this.handleDelClose(data)}/>
       </React.Fragment>
     );
   }

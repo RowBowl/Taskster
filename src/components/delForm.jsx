@@ -14,7 +14,7 @@ class DelForm extends Component {
     return (
       <Dialog
         open={this.props.open}
-        onClose={this.props.onFormClose(null)}
+        onClose={() => this.props.onFormClose(null)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
