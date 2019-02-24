@@ -6,18 +6,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 class AddForm extends Component {
-  /*state = {
-    open: this.props.open
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-  */
 
   getInfo() {
     const textItem = document.getElementById("goalTitle");
@@ -53,7 +41,9 @@ class AddForm extends Component {
       return null;
     }
   };
-
+  getDialogText = () =>{
+      return (this.props.type === "add"  ? "Add a Goal":"Edit:");
+  };
   render() {
     if (!this.props.open) {
       return null;
@@ -67,10 +57,10 @@ class AddForm extends Component {
         fullWidth={true}
         maxWidth={"md"}
       >
-        <DialogTitle id="form-dialog-title">Add a Goal</DialogTitle>
+        <DialogTitle id="form-dialog-title">{this.getDialogText()}</DialogTitle>
 
         <DialogContent>
-          <DialogContentText>Fill out form to add a goal.</DialogContentText>
+          <DialogContentText>Fill out the form describing your goal.</DialogContentText>
 
           <div className="form-group">
             <label htmlFor="goalTitle">Goal Title:</label>

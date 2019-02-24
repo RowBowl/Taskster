@@ -13,7 +13,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.colTitle{
 
+}
+.card{
+    margin-bottom: 20px;
+}
+.card:hover{
+    background-color: #DFDDE0;
+}
 .goalCol {
     text-align: center;
     height:500px;
@@ -30,13 +38,14 @@ code {
     border-radius: 5px;
     padding-top: 5px;
 }
+
+.compCol .card{
+    background-color: #7EFFA3;
+}
+
 .goalBtn {
   float: right;
 
-}
-.compBtn {
-  float: right;
-  margin-right: 2px;
 }
 .goalText {
   text-align: start;

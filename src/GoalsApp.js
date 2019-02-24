@@ -12,6 +12,30 @@ class GoalsApp extends Component {
         goals: [],
         comp: [],
         toDel: null,
+        isEditOpen: false,
+        toEdit:null,
+
+    };
+    //EDIT ~~~~~~~~~~~~~~~~~~~~~~
+    handleEdit= (id) => {
+        this.setState({toEdit:id}, ()=> {
+
+            this.setState({ isEditOpen: true });
+
+        });
+    };
+
+    handleEditClose = data => {
+        this.setState({ isEditOpen: false });
+        if (!data) {
+            return null;
+        }
+
+        const { goalTitle, goalBody } = data;
+        const newG = {id: this.state.toEdit, goalTitle, goalBody};
+        const goals = this.state.goals.map((x)=> { return x.id === this.state.toEdit ? newG : x; });
+        this.setState({ goals });
+        this.setState({toEdit:null});
 
     };
 
@@ -87,11 +111,13 @@ class GoalsApp extends Component {
                 <div className="container">
                     <div className="App row justify-content-around">
                         <div className="col-5 goalCol">
+                            <p className="colTitle">To-Do List:</p>
                             <Goals
                             goals={this.state.goals}
                             currID={this.state.currID}
                             onDelete={id => this.handleDelete(id)}
                             onComp={id=>this.handleComplete(id)}
+                            onEdit={id=>this.handleEdit(id)}
                             type="todo"
                             />
 
@@ -101,26 +127,33 @@ class GoalsApp extends Component {
                             </button>
                         </div>
 
-                        <div className="col-5 compCol">
+                        <div className="col-5 compCol container-drag">
+                            <p className="colTitle">Completed List:</p>
                             <Goals
                             goals={this.state.comp}
                             currID={this.state.currID}
                             onDelete={id => this.handleDelete(id)}
                             onComp={id=>this.handleComplete(id)}
+                            onEdit={id=>this.handleEdit(id)}
                             type="complete"
                             />
                         </div>
                     </div>
                 </div>
 
-                <AddForm
-                open={this.state.isOpen}
-                onFormClose={data => this.handleClose(data)}
-                />
+                <AddForm type="add" open={this.state.isOpen} onFormClose={data => this.handleClose(data)} />
                 <DelForm open={this.state.isDelOpen} onFormClose={data => this.handleDelClose(data)}/>
+
+                <AddForm type="edit" open={this.state.isEditOpen} onFormClose={data=> this.handleEditClose(data)}/>
             </React.Fragment>
         );
     }
 }
+/*
+TODOS:
+    drag and drop design
+    cosmetics: change colors when hovering over certain buttons
+    addPOPPERS
 
+*/
 export default GoalsApp;
