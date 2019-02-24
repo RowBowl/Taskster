@@ -38,9 +38,11 @@ code {
     border-radius: 5px;
     padding-top: 5px;
 }
-
+.goalCol .card{
+    cursor: grab;
+}
 .compCol .card{
-    background-color: #7EFFA3;
+    background-color: #D6E3FF;
 }
 
 .goalBtn {
@@ -62,7 +64,6 @@ code {
   display: none;
 }
 
-.droppable{
-    width: inherit;
-    height: inherit;
+ .goalCol .deleteB:hover{
+    background-color: #FFC0C0;
 }

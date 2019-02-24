@@ -19,7 +19,7 @@ class Goals extends Component {
             onComp={id=> this.props.onComp(id)}
             partOf={this.props.type}
             onEdit={id => this.props.onEdit(id)}
-            draggable
+
           />
         ))}
       </React.Fragment>

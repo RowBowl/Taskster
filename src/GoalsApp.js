@@ -104,19 +104,20 @@ class GoalsApp extends Component {
 
     onDragOver = (ev) => {
         ev.preventDefault();
-        console.log("HI");
+
     };
 
     onDrop = (ev) => {
         const data = parseInt(ev.dataTransfer.getData("id"),10);
         const goal = this.state.goals.find(x => x.id === data );
 
+        if(!goal){return;}
         const goals = this.state.goals.filter(x => x.id !== data);
         const comp = this.state.comp;
         comp.push(goal);
         this.setState({ goals });
         this.setState({comp});
-        
+
     };
 
     render() {
@@ -142,11 +143,11 @@ class GoalsApp extends Component {
                             </button>
                         </div>
 
-                        <div className="col-5 compCol container-drag">
+                        <div className="col-5 compCol container-drag droppable" onDragOver={(e)=>this.onDragOver(e)}
+                        onDrop={(e)=>this.onDrop(e)}>
                             <p className="colTitle">Completed List:</p>
-                            <div className="droppable"
-                                onDragOver={(e)=>this.onDragOver(e)}
-                                onDrop={(e)=>this.onDrop(e)}>
+
+
                                 <Goals
                                 goals={this.state.comp}
                                 currID={this.state.currID}
@@ -155,7 +156,7 @@ class GoalsApp extends Component {
                                 onEdit={id=>this.handleEdit(id)}
                                 type="complete"
                                 />
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -170,7 +171,6 @@ class GoalsApp extends Component {
 }
 /*
 TODOS:
-    drag and drop design
     cosmetics: change colors when hovering over certain buttons
     addPOPPERS
 

@@ -14,17 +14,19 @@ class Goal extends Component {
   render() {
 
     return (
-      <div className="container draggable" draggable onDragStart={(e)=>this.onDragStart(e,this.props.goal.id)}>
+      <div className="container draggable"
+            draggable={this.props.partOf === "todo"? true:false}
+            onDragStart={(e)=>this.onDragStart(e,this.props.goal.id)}>
         <div className="card" >
           <div className="card-header goalText">
             {this.props.goal.goalTitle}
             <button
-                className="btn btn-danger btn-sm goalBtn"
+                className="btn btn-danger btn-sm goalBtn deleteB"
                 onClick={() => this.props.onDelete(this.props.goal.id)}
             >Delete
             </button>
             <button
-                className="btn btn-success btn-sm goalBtn"
+                className="btn btn-success btn-sm goalBtn completeB"
                 onClick={() => this.props.onComp(this.props.goal.id)}
                 style={{marginRight:'2px',}}
             > <ion-icon name={this.getType()}></ion-icon>
