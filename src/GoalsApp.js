@@ -102,7 +102,22 @@ class GoalsApp extends Component {
         this.setState({ currID: this.state.currID + 1 });
     };
 
+    onDragOver = (ev) => {
+        ev.preventDefault();
+        console.log("HI");
+    };
 
+    onDrop = (ev) => {
+        const data = parseInt(ev.dataTransfer.getData("id"),10);
+        const goal = this.state.goals.find(x => x.id === data );
+
+        const goals = this.state.goals.filter(x => x.id !== data);
+        const comp = this.state.comp;
+        comp.push(goal);
+        this.setState({ goals });
+        this.setState({comp});
+        
+    };
 
     render() {
         return (
@@ -129,14 +144,18 @@ class GoalsApp extends Component {
 
                         <div className="col-5 compCol container-drag">
                             <p className="colTitle">Completed List:</p>
-                            <Goals
-                            goals={this.state.comp}
-                            currID={this.state.currID}
-                            onDelete={id => this.handleDelete(id)}
-                            onComp={id=>this.handleComplete(id)}
-                            onEdit={id=>this.handleEdit(id)}
-                            type="complete"
-                            />
+                            <div className="droppable"
+                                onDragOver={(e)=>this.onDragOver(e)}
+                                onDrop={(e)=>this.onDrop(e)}>
+                                <Goals
+                                goals={this.state.comp}
+                                currID={this.state.currID}
+                                onDelete={id => this.handleDelete(id)}
+                                onComp={id=>this.handleComplete(id)}
+                                onEdit={id=>this.handleEdit(id)}
+                                type="complete"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -61,3 +61,8 @@ code {
   padding: 10px;
   display: none;
 }
+
+.droppable{
+    width: inherit;
+    height: inherit;
+}

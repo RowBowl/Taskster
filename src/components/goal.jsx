@@ -7,10 +7,14 @@ class Goal extends Component {
       const partOf = this.props.partOf;
       return (partOf === "todo" ? "checkmark": "arrow-back");
   }
+  onDragStart = (e, id)=>{
+    //console.log(id);
+    e.dataTransfer.setData("id", id);
+  };
   render() {
 
     return (
-      <div className="container draggable" draggable>
+      <div className="container draggable" draggable onDragStart={(e)=>this.onDragStart(e,this.props.goal.id)}>
         <div className="card" >
           <div className="card-header goalText">
             {this.props.goal.goalTitle}
