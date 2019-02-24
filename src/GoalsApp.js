@@ -171,6 +171,8 @@ class GoalsApp extends Component {
 }
 /*
 TODOS:
+    BOTTOM FREQ USED SMALL DRAGGABLE OBJECTS
+    POPPERS FOR DRAGGGING
     cosmetics: change colors when hovering over certain buttons
     addPOPPERS
 
