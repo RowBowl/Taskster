@@ -19,9 +19,7 @@ code {
 .card{
     margin-bottom: 20px;
 }
-.card:hover{
-    background-color: #DFDDE0;
-}
+
 .goalCol {
     text-align: center;
     height:500px;
@@ -45,10 +43,10 @@ code {
     background-color: #D6E3FF;
 }
 
-.goalBtn {
+.deleteBtn, .completeBtn, .editBtn {
   float: right;
-
 }
+
 .goalText {
   text-align: start;
 }
@@ -62,8 +60,4 @@ code {
   border-radius: 10px;
   padding: 10px;
   display: none;
-}
-
- .goalCol .deleteB:hover{
-    background-color: #FFC0C0;
 }

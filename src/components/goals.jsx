@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Goal from "./goal";
-import jQuery from 'jquery'
+
 
 class Goals extends Component {
   render() {

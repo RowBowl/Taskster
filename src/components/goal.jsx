@@ -2,17 +2,14 @@ import React, { Component } from "react";
 
 class Goal extends Component {
 
-
-  getType = () => {
-      const partOf = this.props.partOf;
-      return (partOf === "todo" ? "checkmark": "arrow-back");
-  }
   onDragStart = (e, id)=>{
     //console.log(id);
     e.dataTransfer.setData("id", id);
   };
   render() {
-
+    const getStyle = ()=>{
+        return (this.props.partOf === "complete"? {display:"none",}: {});
+    }
     return (
       <div className="container draggable"
             draggable={this.props.partOf === "todo"? true:false}
@@ -20,16 +17,18 @@ class Goal extends Component {
         <div className="card" >
           <div className="card-header goalText">
             {this.props.goal.goalTitle}
+
             <button
-                className="btn btn-danger btn-sm goalBtn deleteB"
+                className="btn btn-danger btn-sm deleteBtn "
                 onClick={() => this.props.onDelete(this.props.goal.id)}
             >Delete
             </button>
+
             <button
-                className="btn btn-success btn-sm goalBtn completeB"
+                className="btn btn-success btn-sm completeBtn "
                 onClick={() => this.props.onComp(this.props.goal.id)}
                 style={{marginRight:'2px',}}
-            > <ion-icon name={this.getType()}></ion-icon>
+            > <ion-icon name={this.props.partOf === "todo" ? "checkmark": "arrow-back"}></ion-icon>
             </button>
 
 
@@ -40,8 +39,9 @@ class Goal extends Component {
 
             <button
                 type="button"
-                className="btn btn-light btn-sm goalBtn "
+                className="btn btn-light btn-sm editBtn "
                 onClick={()=> this.props.onEdit(this.props.goal.id)}
+                style={getStyle()}
             > <ion-icon name="hammer"></ion-icon>
             </button>
 
