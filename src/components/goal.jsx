@@ -10,6 +10,8 @@ class Goal extends Component {
     const getStyle = ()=>{
         return (this.props.partOf === "complete"? {display:"none",}: {});
     }
+
+    const classStrBtn = this.props.partOf==="todo"?"btn btn-success btn-sm completeBtn": "btn btn-warning btn-sm completeBtn";
     return (
       <div className="container draggable"
             draggable={this.props.partOf === "todo"? true:false}
@@ -25,7 +27,7 @@ class Goal extends Component {
             </button>
 
             <button
-                className="btn btn-success btn-sm completeBtn "
+                className={classStrBtn}
                 onClick={() => this.props.onComp(this.props.goal.id)}
                 style={{marginRight:'2px',}}
             > <ion-icon name={this.props.partOf === "todo" ? "checkmark": "arrow-back"}></ion-icon>

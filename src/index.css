@@ -22,7 +22,7 @@ code {
 
 .goalCol {
     text-align: center;
-    height:500px;
+    height:600px;
     overflow-y: auto;
     border: 2px solid #9ABAFF;
     border-radius: 5px;
@@ -30,7 +30,7 @@ code {
 }
 .compCol {
     text-align: center;
-    height:500px;
+    height:600px;
     overflow-y: auto;
     border: 2px solid #9ABAFF;
     border-radius: 5px;
@@ -47,6 +47,9 @@ code {
   float: right;
 }
 
+.compcol .completeBtn{
+    background-color: yellow;
+}
 .goalText {
   text-align: start;
 }
@@ -60,4 +63,27 @@ code {
   border-radius: 10px;
   padding: 10px;
   display: none;
+}
+
+.quickAddSection{
+    height: 250px;
+    margin: 10px;
+    border: 2px solid #9ABAFF;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.quickCard{
+    background-color: #00A0D4;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 4px;
+    color: white;
+    margin: 10px;
+}
+
+.quickCard button{
+    padding: 2px;
+    filter: invert(100%);
 }

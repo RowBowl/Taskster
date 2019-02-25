@@ -3,7 +3,7 @@ import Goals from "./components/goals";
 import AddForm from "./components/addForm";
 import DelForm from "./components/delForm";
 import NavBar from "./components/navbar";
-
+import QuickAdd from "./components/quickAdd";
 class GoalsApp extends Component {
     state = {
         isOpen: false,
@@ -120,13 +120,33 @@ class GoalsApp extends Component {
 
     };
 
+    onQDragOver = (ev) => {
+        ev.preventDefault();
+
+    };
+
+    onQDrop = (ev) => {
+        const goalTitle = ev.dataTransfer.getData("toAddTitle");
+        const goalBody = ev.dataTransfer.getData("toAddBody");
+        const goals = this.state.goals;
+        goals.push({ id: this.state.currID, goalTitle, goalBody });
+        this.setState({ goals });
+        this.setState({ currID: this.state.currID + 1 });
+
+    };
+
+
+
+
     render() {
         return (
             <React.Fragment>
                 <NavBar />
                 <div className="container">
                     <div className="App row justify-content-around">
-                        <div className="col-5 goalCol">
+                        <div className="col-5 goalCol container-drag droppable"
+                            onDragOver={(e)=>this.onQDragOver(e)}
+                            onDrop={(e)=>this.onQDrop(e)}>
                             <p className="colTitle">To-Do List:</p>
                             <Goals
                             goals={this.state.goals}
@@ -165,6 +185,15 @@ class GoalsApp extends Component {
                 <DelForm open={this.state.isDelOpen} onFormClose={data => this.handleDelClose(data)}/>
 
                 <AddForm type="edit" open={this.state.isEditOpen} onFormClose={data=> this.handleEditClose(data)}/>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="quickAddSection col-10 ">
+                            Quick Add:
+                            <QuickAdd/>
+
+                        </div>
+                    </div>
+                </div>
             </React.Fragment>
         );
     }
