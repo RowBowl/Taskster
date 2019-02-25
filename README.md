@@ -1,5 +1,7 @@
 # schedule-app-redesign
 
-Unfinished
+Goals and Tasks manager app.
 
-Redesign of a school group project. Using React.
+Redesign of a school group project using React and Bootstrap.
+
+Demo: https://youtu.be/-VZKhLETsSM
