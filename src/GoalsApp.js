@@ -128,6 +128,7 @@ class GoalsApp extends Component {
     onQDrop = (ev) => {
         const goalTitle = ev.dataTransfer.getData("toAddTitle");
         const goalBody = ev.dataTransfer.getData("toAddBody");
+        if(!goalTitle || !goalBody){return;}
         const goals = this.state.goals;
         goals.push({ id: this.state.currID, goalTitle, goalBody });
         this.setState({ goals });
