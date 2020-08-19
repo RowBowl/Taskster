@@ -78,12 +78,12 @@ code {
     border-radius: 10px;
     text-align: center;
     display: inline-block;
-    padding: 4px;
+    padding: 10px;
     color: white;
     margin: 10px;
 }
 
 .quickCard button{
-    padding: 2px;
+    padding: 3px;
     filter: invert(100%);
 }
