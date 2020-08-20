@@ -4,9 +4,9 @@ Goals and Tasks manager app.
 
 Redesign of a school group project using React and Bootstrap.
 
-Full Demo: https://youtu.be/-VZKhLETsSM
+Full Demo: https://youtu.be/8-uS7ieC1Qs
 
-<a href="https://youtu.be/-VZKhLETsSM">
+<a href="https://youtu.be/8-uS7ieC1Qs">
 
 ![Taskster GIF](readme_assets/Demo.gif)
 
